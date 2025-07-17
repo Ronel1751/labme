@@ -1,0 +1,130 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffe0f0, #fffaf4);
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+.envelope-container {
+    text-align: center;
+    animation: bounceIn 1s;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    60% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+.envelope {
+    position: relative;
+    width: 300px; /* Increased for message fitting */
+    height: 220px; /* Increased for message fitting */
+    perspective: 1000px;
+}
+
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 150px solid transparent; /* adjusted for width */
+    border-right: 150px solid transparent; /* adjusted for width */
+    border-bottom: 110px solid #fff0f6; /* adjusted for proportion */
+    background: linear-gradient(to bottom, #ffe6f0, #ffffff);
+    transition: transform 1s ease;
+    transform-origin: top center;
+    z-index: 2;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+.letter {
+    position: absolute;
+    bottom: 0;
+    width: 300px; /* match envelope width */
+    height: 170px; /* increased for message */
+    background: #ffffff;
+    border: 2px solid #ffb6c1;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.letter p {
+    margin: 0;
+    padding: 10px;
+    font-size: 16px;
+    color: #d96b85;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+button#openBtn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    border: none;
+    background: #ff85a2;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transition: background 0.3s, transform 0.2s;
+}
+
+button#openBtn:hover {
+    background: #ff9ab6;
+    transform: scale(1.05);
+}
+
+.open .flap {
+    transform: rotateX(-160deg);
+}
+
+.open .letter {
+    opacity: 1;
+}
+
+/* Floating hearts */
+.heart-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+}
+
+.heart {
+    position: absolute;
+    font-size: 22px;
+    animation: float 4s linear forwards;
+    user-select: none;
+    opacity: 0.8;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+    }
+}
